@@ -1,0 +1,39 @@
+header {
+    color: white;
+    background-image: linear-gradient(to right, rgb(102, 181, 208) , rgb(34, 34, 150));
+    text-align: center;
+    height: 12vh;
+}
+
+header h1 {
+    padding: 1% 0%;
+}
+
+.left {
+    min-height: 100vh;
+}
+
+.left form {
+    border-bottom: 2px solid black;
+    padding-bottom: 5%;
+    padding-left: 3%;
+}
+
+#historyCities {
+    padding-top: 5%;
+    padding-left: 3%;
+}
+
+
+.right {
+    min-height: 100vh;
+}
+
+#forecastBlock {
+    padding-top: 3%;
+}
+
+.forecastDeck div {
+    background-color: rgb(72, 80, 101);
+    color: white;
+}
