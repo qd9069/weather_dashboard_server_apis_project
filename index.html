@@ -43,11 +43,11 @@
                 <!-- for the main weather box -->
                 <div id="weatherBlock" class="card" style="width: 53rem;">
                     <div class="card-body">
-                      <h3 class="card-title font-weight-bolder">City (current day) + weather icon</h3>
-                      <p class="card-text">Temp:</p>
-                      <p class="card-text">Wind:</p>
-                      <p class="card-text">Humidity:</p>
-                      <p class="card-text">UV Index: with color icon</p>
+                      <h3 id="cityDate" class="card-title font-weight-bolder"></h3>
+                      <p class="card-text">Temp:  <span id="temp"></span></p>
+                      <p class="card-text">Wind:  <span id="wind"></span></p>
+                      <p class="card-text">Humidity:  <span id="humidity"></span></p>
+                      <p class="card-text">UV Index:  <span id="uvIndex"></span></p>
                     </div>
                 </div>
 
@@ -103,6 +103,7 @@
 
 
     <!-- to link the JavaScript  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 

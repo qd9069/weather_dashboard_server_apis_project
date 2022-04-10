@@ -33,6 +33,28 @@ header h1 {
     border-radius: 10px;
 }
 
+/* for UV index: favorable: 0-2/ moderate: 3-5/ severe: 6+ */
+.low {
+    background-color: green;
+    color: white;
+    padding: 0.5% 2%;
+    border-radius: 3px;
+}
+
+.moderate {
+    background-color: yellow;
+    color: white;
+    padding: 0.5% 2%;
+    border-radius: 3px;
+}
+
+.high {
+    background-color: red;
+    color: white;
+    padding: 0.5% 2%;
+    border-radius: 3px;
+}
+
 #forecastBlock {
     padding-top: 3%;
 }

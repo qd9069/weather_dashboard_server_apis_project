@@ -8,6 +8,9 @@ var city;
 // api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
 var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
 
+// Make the API Call Using Fetch to get the weather info
+// fetch(queryURL)
+
 // to get user input city
 var userInput = document.getElementById("input");
 var searchButton = document.getElementById("searchBtn");
@@ -42,26 +45,80 @@ function getCity(event) {
     event.preventDefault();
 
     var inputCity = userInput.value.trim();
-    console.log(inputCity);
+    // console.log(inputCity);
 
     var requestUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + inputCity + "&limit=1&appid=" + APIKey;
   
+    fetch(requestUrl)
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        // console.log(data);
+
+        var cityLat = data[0].lat
+        var cityLon = data[0].lon
+        // console.log(cityLat);
+        // console.log(cityLon);
+
+    });
+
+}
+
+searchButton.addEventListener("click", getCity);
+// ******* how to get the inputCity, cityLon and cityLat outside of the function? **********
+
+var cityLat = "32.7174202";
+var cityLon = "-117.1627728";
+var currentTemp = document.getElementById("temp");
+var currentWind = document.getElementById("wind");
+var currentHumidity = document.getElementById("humidity");
+var currentUV = document.getElementById("uvIndex");
+var currentCityDate = document.getElementById("cityDate");
+// for current date
+var currentDay = moment ().format("MM/DD/YYYY");
+
+// Make the oneCall API Call Using Fetch to get weather info
+function getWeather() {
+    var requestUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + cityLat + "&lon=" + cityLon + "&exclude=hourly,minutely,alerts&units=imperial&appid=" + APIKey;
+    var inputCity = "San Diego"
+
     fetch(requestUrl)
       .then(function (response) {
         return response.json();
       })
       .then(function (data) {
         console.log(data);
+
+        // to show weather in the main weather box
         
-        var lon = data[0].lon
-        var lat = data[0].lat
-        console.log(lon);
-        console.log(lat);
+        currentCityDate.textContent = inputCity + " (" + currentDay + ") + weather icon";
+        currentTemp.textContent = data.current.temp + "°F";
+        currentWind.textContent = data.current.wind_speed + " MPH";
+        currentHumidity.textContent = data.current.humidity + " %";
+        
+        // to color the UV index
+        if (data.current.uvi <= 2) {
+            currentUV.classList.add("low");
+        } else 
+        if (3 <= data.current.uvi <= 5) {
+            currentUV.classList.add("moderate");
+        } else 
+        if (data.current.uvi >= 6) {
+            currentUV.classList.add("high");
+        }
+        
+        currentUV.textContent = data.current.uvi;
+
+
 
       });
 }
+getWeather();
 
-searchButton.addEventListener("click", getCity);
+
+
+
 
 
 // example for Geocoding API
@@ -78,8 +135,6 @@ searchButton.addEventListener("click", getCity);
 // }
 // geoLocationApiExample();
 
-// Make the API Call Using Fetch to get the weather info
-// fetch(queryURL)
 
 
 // example for one call api
