@@ -24,9 +24,13 @@ header h1 {
     padding-left: 3%;
 }
 
-
 .right {
     min-height: 100vh;
+}
+
+#weatherBlock {
+    border: 2px solid rgb(72, 80, 101);
+    border-radius: 10px;
 }
 
 #forecastBlock {
