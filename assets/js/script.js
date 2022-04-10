@@ -78,6 +78,41 @@ var currentCityDate = document.getElementById("cityDate");
 // for current date
 var currentDay = moment ().format("MM/DD/YYYY");
 
+var date1 = document.getElementById("date1");
+var date2 = document.getElementById("date2");
+var date3 = document.getElementById("date3");
+var date4 = document.getElementById("date4");
+var date5 = document.getElementById("date5");
+var dates = [date1, date2, date3, date4, date5];
+
+var date1Temp = document.getElementById("date1Temp");
+var date2Temp = document.getElementById("date2Temp");
+var date3Temp = document.getElementById("date3Temp");
+var date4Temp = document.getElementById("date4Temp");
+var date5Temp = document.getElementById("date5Temp");
+var datesTemp = [date1Temp, date2Temp, date3Temp, date4Temp, date5Temp];
+
+var date1Wind = document.getElementById("date1Wind");
+var date2Wind = document.getElementById("date2Wind");
+var date3Wind = document.getElementById("date3Wind");
+var date4Wind = document.getElementById("date4Wind");
+var date5Wind = document.getElementById("date5Wind");
+var datesWind = [date1Wind, date2Wind, date3Wind, date4Wind, date5Wind];
+
+var date1Hum = document.getElementById("date1Hum");
+var date2Hum = document.getElementById("date2Hum");
+var date3Hum = document.getElementById("date3Hum");
+var date4Hum = document.getElementById("date4Hum");
+var date5Hum = document.getElementById("date5Hum");
+var datesHum = [date1Hum, date2Hum, date3Hum, date4Hum, date5Hum];
+
+var date1Icon = document.getElementById("date1Icon");
+var date2Icon = document.getElementById("date2Icon");
+var date3Icon = document.getElementById("date3Icon");
+var date4Icon = document.getElementById("date4Icon");
+var date5Icon = document.getElementById("date5Icon");
+var datesIcon = [date1Icon, date2Icon, date3Icon, date4Icon, date5Icon];
+
 // Make the oneCall API Call Using Fetch to get weather info
 function getWeather() {
     var requestUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + cityLat + "&lon=" + cityLon + "&exclude=hourly,minutely,alerts&units=imperial&appid=" + APIKey;
@@ -91,26 +126,35 @@ function getWeather() {
         console.log(data);
 
         // to show weather in the main weather box
-        
-        currentCityDate.textContent = inputCity + " (" + currentDay + ") + weather icon";
+        var icon = document.getElementById("icon");
+        var addIcon = icon.setAttribute("src", "http://openweathermap.org/img/wn/" + data.current.weather[0].icon + "@2x.png");
+
+        currentCityDate.textContent = inputCity + " (" + currentDay + ")";
         currentTemp.textContent = data.current.temp + "°F";
         currentWind.textContent = data.current.wind_speed + " MPH";
         currentHumidity.textContent = data.current.humidity + " %";
         
         // to color the UV index
-        if (data.current.uvi <= 2) {
+        if (data.current.uvi < 3) {
             currentUV.classList.add("low");
-        } else 
-        if (3 <= data.current.uvi <= 5) {
+        } 
+        else if (3 <= data.current.uvi && data.current.uvi < 6) {
             currentUV.classList.add("moderate");
-        } else 
-        if (data.current.uvi >= 6) {
+        } 
+        else {
             currentUV.classList.add("high");
         }
         
         currentUV.textContent = data.current.uvi;
 
-
+        // to show weather in  the forecastBlock array [1] for the tomorrow ... [5] for 5 days later
+        for (var i=1; i < 6; i++) {
+            dates[i-1].textContent = moment.unix(data.daily[i].dt).format("MM/DD/YYYY");
+            datesTemp[i-1].textContent = "Temp: " + data.daily[i].temp.day + "°F";
+            datesWind[i-1].textContent = "Wind: " + data.daily[i].wind_speed + " MPH";
+            datesHum[i-1].textContent = "Humidity: " + data.daily[i].humidity + " %";
+            var addDatesIcon = datesIcon[i-1].setAttribute("src", "http://openweathermap.org/img/wn/" + data.daily[i].weather[0].icon + "@2x.png");
+        }
 
       });
 }

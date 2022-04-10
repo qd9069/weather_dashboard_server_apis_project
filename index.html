@@ -43,7 +43,10 @@
                 <!-- for the main weather box -->
                 <div id="weatherBlock" class="card" style="width: 53rem;">
                     <div class="card-body">
-                      <h3 id="cityDate" class="card-title font-weight-bolder"></h3>
+                      <div class="displayIcon">
+                        <h3 id="cityDate" class="card-title font-weight-bolder"></h3> 
+                        <img id="icon" alt="weather icon"></img> 
+                      </div>
                       <p class="card-text">Temp:  <span id="temp"></span></p>
                       <p class="card-text">Wind:  <span id="wind"></span></p>
                       <p class="card-text">Humidity:  <span id="humidity"></span></p>
@@ -58,39 +61,39 @@
                 
                     <div class="card-deck forecastDeck">
                         <div class="card">
-                            <h5 class="card-title">current +1 day</h5>
-                            <i>weather icon</i>
-                            <p class="card-text">Temp:</p>
-                            <p class="card-text">Wind:</p>
-                            <p class="card-text">Humidity:</p>
+                            <h5 id="date1" class="card-title"></h5>
+                            <img id="date1Icon" alt="weather icon"></img>
+                            <p id="date1Temp" class="card-text"></p>
+                            <p id="date1Wind" class="card-text"></p>
+                            <p id="date1Hum" class="card-text"></p>
                         </div>
                         <div class="card">
-                            <h5 class="card-title">current +2 day</h5>
-                            <i>weather icon</i>
-                            <p class="card-text">Temp:</p>
-                            <p class="card-text">Wind:</p>
-                            <p class="card-text">Humidity:</p>
+                            <h5 id="date2" class="card-title"></h5>
+                            <img id="date2Icon" alt="weather icon"></img>
+                            <p id="date2Temp" class="card-text"></p>
+                            <p id="date2Wind" class="card-text"></p>
+                            <p id="date2Hum" class="card-text"></p>
                         </div>
                         <div class="card">
-                            <h5 class="card-title">current +3 day</h5>
-                            <i>weather icon</i>
-                            <p class="card-text">Temp:</p>
-                            <p class="card-text">Wind:</p>
-                            <p class="card-text">Humidity:</p>
+                            <h5 id="date3" class="card-title"></h5>
+                            <img id="date3Icon" alt="weather icon"></img>
+                            <p id="date3Temp" class="card-text"></p>
+                            <p id="date3Wind" class="card-text"></p>
+                            <p id="date3Hum" class="card-text"></p>
                         </div>
                         <div class="card">
-                            <h5 class="card-title">current +4 day</h5>
-                            <i>weather icon</i>
-                            <p class="card-text">Temp:</p>
-                            <p class="card-text">Wind:</p>
-                            <p class="card-text">Humidity:</p>
+                            <h5 id="date4" class="card-title"></h5>
+                            <img id="date4Icon" alt="weather icon"></img>
+                            <p id="date4Temp" class="card-text"></p>
+                            <p id="date4Wind" class="card-text"></p>
+                            <p id="date4Hum" class="card-text"></p>
                         </div>
                         <div class="card">
-                            <h5 class="card-title">current +5 day</h5>
-                            <i>weather icon</i>
-                            <p class="card-text">Temp:</p>
-                            <p class="card-text">Wind:</p>
-                            <p class="card-text">Humidity:</p>
+                            <h5 id="date5" class="card-title"></h5>
+                            <img id="date5Icon" alt="weather icon"></img>
+                            <p id="date5Temp" class="card-text"></p>
+                            <p id="date5Wind" class="card-text"></p>
+                            <p id="date5Hum" class="card-text"></p>
                         </div>
                     </div>
                 </div>

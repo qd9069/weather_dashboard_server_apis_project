@@ -29,8 +29,22 @@ header h1 {
 }
 
 #weatherBlock {
-    border: 2px solid rgb(72, 80, 101);
+    border: 2px solid rgb(58, 64, 80);
     border-radius: 10px;
+}
+
+.displayIcon {
+    display: flex;
+}
+
+img {
+    max-height: 50%;
+    max-width: 50%;
+}
+
+#cityDate {
+    margin: 0%;
+    padding: 4% 0% 0% 0%;
 }
 
 /* for UV index: favorable: 0-2/ moderate: 3-5/ severe: 6+ */
@@ -43,7 +57,7 @@ header h1 {
 
 .moderate {
     background-color: yellow;
-    color: white;
+    color: black;
     padding: 0.5% 2%;
     border-radius: 3px;
 }
@@ -60,6 +74,7 @@ header h1 {
 }
 
 .forecastDeck div {
-    background-color: rgb(72, 80, 101);
+    background-color: rgb(103, 115, 145);
     color: white;
+    padding: 1% 1% 2% 1%;
 }
