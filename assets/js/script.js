@@ -54,28 +54,6 @@ var searchButton = document.getElementById("searchBtn");
 var right = document.getElementById("right");
 right.style.display = "none";
 
-//--------------- for local storage ----------------
-// searchButton.addEventListener("click", function(event) {
-    // event.preventDefault();
-            
-    // get input value from search form
-    // var inputCity = userInput.value.trim();
-           
-    // use setItem to store the input text value in localStorage
-    // localStorage.setItem("event", inputCity);
-                
-// });
-
-// get the input text value from local storage
-// var savedCity = localStorage.getItem("event");
-// console.log(savedCity)
-
-// to keep the saved city persists
-// if (savedCity) {
-//     userInput.value = savedCity;
-// }
-//----------------------------------------------------
-
 
 // Make the Geocoding API Call Using Fetch to get city lat and lon
 function getCity(event) { 
@@ -158,6 +136,75 @@ function getCity(event) {
 }
 
 searchButton.addEventListener("click", getCity);
+
+
+//--------------- for local storage ----------------
+var cityHistory = [];
+
+searchButton.addEventListener("click", function(event) {
+    event.preventDefault();
+            
+    // get input value from search form
+    var inputCity = userInput.value.trim();
+           
+    // Return from function early if inputCity is blank
+    if (inputCity === "") {
+    return;
+    }
+
+    // Add new city to cityHistory array, clear the input
+    cityHistory.push(inputCity);
+    userInput.value = "";
+
+    // store value: stringify and set key in localStorage to cityHistroy array
+    localStorage.setItem("city", JSON.stringify(cityHistory));
+
+    renderCityHistory();
+                
+});
+
+var cityList = document.querySelector("#historyCities");
+function renderCityHistory () {
+
+    cityList.innerHTML = "";
+
+    // Render a new li for each todo
+    for (var i = 0; i < cityHistory.length; i++) {
+      
+        var searchedCity = cityHistory[i];
+
+        var button = document.createElement("button");
+        button.textContent = searchedCity;
+        button.setAttribute("data-index", i);
+        button.classList.add("btn-block");
+        button.classList.add("btn-secondary");
+        button.classList.add("btn");
+
+        cityList.appendChild(button);
+        
+    }
+
+}
+
+// This function is being called below and will run when the page loads.
+function init() {
+    // Get stored cities from localStorage
+    var storedCities = JSON.parse(localStorage.getItem("city"));
+  
+    // If saved cities were retrieved from localStorage, update the cityHistory array to it
+    if (storedCities) {
+      cityHistory = storedCities;
+    }
+
+    renderCityHistory();
+  }
+
+// Calls init to retrieve data and render it to the page on load
+init()
+
+//----------------------------------------------------
+
+// searchButton.addEventListener("click", getCity);
 
 
 // example for Geocoding API
