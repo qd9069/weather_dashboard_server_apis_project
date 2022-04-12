@@ -60,7 +60,7 @@ function getCity(cityName) {
     cityName = cityName.trim();
     // console.log(cityName);
 
-    var requestUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&limit=1&appid=" + APIKey;
+    var requestUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&limit=1&appid=" + APIKey;
   
     fetch(requestUrl)
     .then(function (response) {
