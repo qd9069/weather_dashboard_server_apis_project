@@ -94,12 +94,13 @@ function getWeather(cityName, cityLat, cityLon) {
       .then(function (data) {
         // to show weather in the main weather box
         var icon = document.getElementById("icon");
-        var addIcon = icon.setAttribute("src", "http://openweathermap.org/img/wn/" + data.current.weather[0].icon + "@2x.png");
+        icon.setAttribute("src", "http://openweathermap.org/img/wn/" + data.current.weather[0].icon + "@2x.png");
 
         currentCityDate.textContent = printInputCity + " (" + currentDay + ")";
         currentTemp.textContent = data.current.temp + "°F";
         currentWind.textContent = data.current.wind_speed + " MPH";
         currentHumidity.textContent = data.current.humidity + " %";
+        currentUV.className = "";
         
         // to color the UV index
         if (data.current.uvi < 3) {
@@ -111,7 +112,7 @@ function getWeather(cityName, cityLat, cityLon) {
         else {
             currentUV.classList.add("high");
         }
-        
+
         currentUV.textContent = data.current.uvi;
 
         // to show weather in  the forecastBlock array [1] for the tomorrow ... [5] for 5 days later
