@@ -54,7 +54,7 @@ var right = document.getElementById("right");
 right.style.display = "none";
 
 
-// --------- for Fetch function ------------------
+// --------- for Fetch functions ------------------
 // Make the Geocoding API Call Using Fetch to get city lat and lon
 function getCity(cityName) { 
     cityName = cityName.trim();
@@ -67,26 +67,24 @@ function getCity(cityName) {
         return response.json();
     })
     .then(function (data) {
-        console.log(data);
+        // console.log(data);
 
         var cityLat = data[0].lat;
         var cityLon = data[0].lon;
         // console.log(cityLat);
         // console.log(cityLon);
-       //  getWeather();
 
         getWeather(cityName, cityLat, cityLon);
 
-        // Make the oneCall API Call Using Fetch to get weather info
 
     });
 }
 
-// function to get weather info
+// Make the oneCall API Call Using Fetch to get weather info
 function getWeather(cityName, cityLat, cityLon) {
     var queryURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + cityLat + "&lon=" + cityLon + "&exclude=hourly,minutely,alerts&units=imperial&appid=" + APIKey;
+    
     // to print the inputCity as upper case
-
     var printInputCity = cityName.charAt(0).toUpperCase() + cityName.slice(1);
 
     fetch(queryURL)
@@ -137,7 +135,7 @@ searchButton.addEventListener("click", function(event) {
 
     event.preventDefault();
         
-    // to show the window info after clicking the search button
+    // to show the weather info after clicking the search button
     right.style.display = "block";
 
     // get input value from search form
@@ -145,7 +143,8 @@ searchButton.addEventListener("click", function(event) {
            
     // Return from function early if inputCity is blank
     if (inputCity === "") {
-    return;
+        alert("Please enter a city.");
+        return;
     }
 
     // Add new city to cityHistory array, clear the input
@@ -165,13 +164,15 @@ function renderCityHistory () {
 
     cityList.innerHTML = "";
 
-    // Render a new li for each todo
-    for (var i = 0; i < cityHistory.length; i++) {
-      
+    // Render a new li for each button
+    for (var i = cityHistory.length -1; i >= 0; i--) {  
         var searchedCity = cityHistory[i];
 
+        // to print the searchedCity as upper case
+        var ucCity = searchedCity.charAt(0).toUpperCase() + searchedCity.slice(1);
+
         var button = document.createElement("button");
-        button.textContent = searchedCity;
+        button.textContent = ucCity;
         button.setAttribute("data-index", i);
         button.classList.add("btn-block");
         button.classList.add("btn-secondary");
@@ -209,7 +210,7 @@ init();
 
 
 
-// ------- example ---------------------
+// ------- examples ---------------------
 // example for Geocoding API
 // function geoLocationApiExample() { 
 //     var requestUrl = "http://api.openweathermap.org/geo/1.0/direct?q=San Diego&limit=5&appid=" + APIKey;
@@ -239,4 +240,4 @@ init();
 //       });
 // }
 // getApi();
-
+//-----------------------------------------
