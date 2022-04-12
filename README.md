@@ -1,8 +1,7 @@
-# weather_dashboard_server_apis_project
+# Server-Side APIs: Weather Dashboard Project
 
 ## Link
-### Please click [here](https://qd9069.github.io/) to find the deployed project.
-
+### Please click [here](https://qd9069.github.io/weather_dashboard_server_apis_project/) to find the deployed project.
 
 ## Table of Contents 
 
@@ -13,7 +12,6 @@
 - [Technology](#technology)
 - [Credits](#credits)
 - [Assets](#assets)
-
 
 ## Description
 
@@ -72,7 +70,6 @@ Below are two Third-party APIs that have been using:
 - [One Call API 1.0](https://openweathermap.org/api/one-call-api)
 - [Geocoding API](https://openweathermap.org/api/geocoding-api)
 
-
 ## Assets
 
 The following images demonstrate the web application's appearance and functionality:
@@ -91,7 +88,3 @@ The weather information for a city that has been searched before:
 
 ---
 Code originally by QD 2022 🏆
-
-
-
-
