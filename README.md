@@ -88,7 +88,7 @@ The weather information for a city that has been searched before:
 ![image of the weather info after entering a city](assets/images/weather-dashboard-cities.png)
 
 ## License
-
 Copyright (c) 2022 Elaine D. Released under the MIT [License](./LICENSE).
+
 ---
 Code originally by QD 2022 🏆
